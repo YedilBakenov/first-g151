@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:insert="links.html"></div>
+</head>
+<body>
+
+    <div th:insert="navbar.html"></div>
+
+    <div class="container mt-2">
+        <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>FULL NAME</th>
+                        <th>AGE</th>
+                        <th>COUNT FIGHTS</th>
+                        <th>IS ACTIVE</th>
+                        <th style="width: 8%">DETAILS</th>
+                    </tr>
+                </thead>
+            <tbody>
+
+                <tr th:each="f: ${fighters}">
+                    <td th:text="${f.id}"></td>
+                    <td th:text="${f.fullName}"></td>
+                    <td th:text="${f.age}"></td>
+                    <td th:text="${f.countFights}"></td>
+                    <td th:text="${f.isActive}"></td>
+                    <td> <a class="btn btn-secondary btn-sm" th:href="@{'/details/' + ${f.id}}">DETAILS</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
