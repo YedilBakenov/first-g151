@@ -1,6 +1,7 @@
 package com.main.first_project_g151.controller;
 
 
+import com.main.first_project_g151.db.DBConnector;
 import com.main.first_project_g151.model.Fighter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,13 @@ public class HomeController {
 
     @GetMapping(value = "/") //http://localhost:8080/
     public String getHomePage(Model model){
-        model.addAttribute("fighters", Fighter.getFighters());
+        model.addAttribute("fighters", DBConnector.getAllFighters());
         return "index";
     }
 
     @GetMapping(value = "/details/{id}")
     public String getFighter(@PathVariable int id, Model model){
-        model.addAttribute("fighter", Fighter.getFighterById(id));
+        model.addAttribute("fighter", DBConnector.getFighterById(id));
         return "details";
     }
 
