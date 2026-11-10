@@ -27,7 +27,7 @@ public class HomeController {
 
     @PostMapping(value = "/upd")
     public String updateFighter(Fighter fighter){
-        Fighter.updateFighter(fighter);
+        DBConnector.updateFighter(fighter);
 
         return "redirect:/";
     }
@@ -35,7 +35,7 @@ public class HomeController {
     @PostMapping(value = "/delete")
     public String deleteFighter(@RequestParam int id){
 
-        Fighter.deleteFighter(id);
+        DBConnector.deleteFighter(id);
 
         return "redirect:/";
     }
@@ -48,7 +48,7 @@ public class HomeController {
     @PostMapping(value = "/add")
     public String addFighter(Fighter fighter){
 
-        Fighter.add(fighter);
+        DBConnector.addFighter(fighter);
 
         return "redirect:/";
     }

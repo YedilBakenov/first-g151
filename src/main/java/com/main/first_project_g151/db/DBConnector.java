@@ -1,7 +1,6 @@
 package com.main.first_project_g151.db;
 
 import com.main.first_project_g151.model.Fighter;
-import org.springframework.data.domain.PageRequest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,7 +33,7 @@ public class DBConnector {
 
         try {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM fighters");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM fighters ORDER BY id asc");
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -89,6 +88,65 @@ public class DBConnector {
 
         return fighter;
 
+    }
+
+    public static void updateFighter(Fighter fighter){
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE fighters SET full_name=?, age=?, style=?, " +
+                    "count_fights=?, is_active=? WHERE id=?");
+
+            statement.setString(1, fighter.getFullName());
+            statement.setInt(2, fighter.getAge());
+            statement.setString(3, fighter.getStyle());
+            statement.setInt(4, fighter.getCountFights());
+            statement.setBoolean(5, fighter.getIsActive());
+            statement.setInt(6, fighter.getId());
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addFighter(Fighter fighter){
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO fighters (full_name, age, style, count_fights, is_active) " +
+                    "VALUES (?, ?, ?, ?, ?)");
+
+            statement.setString(1, fighter.getFullName());
+            statement.setInt(2, fighter.getAge());
+            statement.setString(3, fighter.getStyle());
+            statement.setInt(4, fighter.getCountFights());
+            statement.setBoolean(5, fighter.getIsActive());
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteFighter(int id){
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM fighters WHERE id=?");
+
+            statement.setInt(1, id);
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
