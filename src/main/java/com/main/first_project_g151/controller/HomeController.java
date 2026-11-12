@@ -22,6 +22,7 @@ public class HomeController {
     @GetMapping(value = "/details/{id}")
     public String getFighter(@PathVariable int id, Model model){
         model.addAttribute("fighter", DBConnector.getFighterById(id));
+        model.addAttribute("cities", DBConnector.getAllCities());
         return "details";
     }
 
@@ -41,7 +42,8 @@ public class HomeController {
     }
 
     @GetMapping(value = "/add")
-    public String addFighterPage(){
+    public String addFighterPage(Model model){
+        model.addAttribute("cities", DBConnector.getAllCities());
         return "add-page";
     }
 

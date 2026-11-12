@@ -27,6 +27,21 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
+                        <label>CITY:</label>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <select class="form-control" name="city.id">
+                            <option th:each="city: ${cities}"
+                                    th:text="${city.cityName}"
+                                    th:selected="${fighter.city.id==city.id}"
+                                    th:value="${city.id}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
                         <label>AGE:</label>
                     </div>
                 </div>

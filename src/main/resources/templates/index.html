@@ -15,6 +15,7 @@
                     <tr>
                         <th>ID</th>
                         <th>FULL NAME</th>
+                        <th>CITY</th>
                         <th>AGE</th>
                         <th>COUNT FIGHTS</th>
                         <th>IS ACTIVE</th>
@@ -26,6 +27,7 @@
                 <tr th:each="f: ${fighters}">
                     <td th:text="${f.id}"></td>
                     <td th:text="${f.fullName}"></td>
+                    <td th:text="${'Name ' + f.city.cityName + '/' + 'Rating ' + f.city.rating}"></td>
                     <td th:text="${f.age}"></td>
                     <td th:text="${f.countFights}"></td>
                     <td th:text="${f.isActive}"></td>
