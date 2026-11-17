@@ -53,7 +53,7 @@ public class DBConnector {
                 city.setRating(resultSet.getDouble("rating"));
                 city.setCountPeople(resultSet.getInt("count_people"));
 
-                fighter.setCity(city);
+//                fighter.setCity(city);
 
                 fighters.add(fighter);
             }
@@ -93,7 +93,7 @@ public class DBConnector {
                   city.setRating(resultSet.getDouble("rating"));
                   city.setCountPeople(resultSet.getInt("count_people"));
 
-                  fighter.setCity(city);
+//                  fighter.setCity(city);
               }
 
               statement.close();
@@ -118,7 +118,7 @@ public class DBConnector {
             statement.setString(3, fighter.getStyle());
             statement.setInt(4, fighter.getCountFights());
             statement.setBoolean(5, fighter.getIsActive());
-            statement.setInt(6, fighter.getCity().getId());
+//            statement.setInt(6, fighter.getCity().getId());
             statement.setInt(7, fighter.getId());
 
             statement.executeUpdate();
@@ -142,7 +142,7 @@ public class DBConnector {
             statement.setString(3, fighter.getStyle());
             statement.setInt(4, fighter.getCountFights());
             statement.setBoolean(5, fighter.getIsActive());
-            statement.setInt(6, fighter.getCity().getId());
+//            statement.setInt(6, fighter.getCity().getId());
 
             statement.executeUpdate();
             statement.close();
