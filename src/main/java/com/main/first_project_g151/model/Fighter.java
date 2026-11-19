@@ -26,19 +26,27 @@ public class Fighter {
     private String style;
     private int countFights;
     private Boolean isActive;
-//    private City city;
+
+    @OneToOne
+    private Iin iin;
+
+    @ManyToOne
+    private City cityOfBirth;
+
+    @ManyToOne
+    private SchoolEnded schoolEnded;
 
     private static Integer idToBase = 5;
 
     @Getter
     private static List<Fighter> fighters = new ArrayList<>();
 
-    static {
-        fighters.add(new Fighter(1, "Serik Serikov", 20, "box", 20, true));
-        fighters.add(new Fighter(2, "Berik Berikov", 23, "mma", 5, true));
-        fighters.add(new Fighter(3, "Merik Merikov", 29, "mma", 17, true));
-        fighters.add(new Fighter(4, "Jerik Jerikov", 32, "judo", 30, false));
-    }
+//    static {
+//        fighters.add(new Fighter(1, "Serik Serikov", 20, "box", 20, true));
+//        fighters.add(new Fighter(2, "Berik Berikov", 23, "mma", 5, true));
+//        fighters.add(new Fighter(3, "Merik Merikov", 29, "mma", 17, true));
+//        fighters.add(new Fighter(4, "Jerik Jerikov", 32, "judo", 30, false));
+//    }
 
 
     public static Fighter getFighterById(int id) {
