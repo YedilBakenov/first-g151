@@ -13,6 +13,68 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
+
+            <div class="row">
+                <div class="col-6">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>MODEL NAME</th>
+                            <th>ENGINE</th>
+                            <th>PRICE</th>
+                            <th>DETAILS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each="car: ${cars}">
+                            <form action="/delete-car" method="post">
+                                <input type="hidden" name="car_id" th:value="${car.id}">
+                                <input type="hidden" name="fighter_id" th:value="${fighter.id}">
+                                <td th:text="${car.id}"></td>
+                                <td th:text="${car.modelName}"></td>
+                                <td th:text="${car.engine}"></td>
+                                <td th:text="${car.price}"></td>
+                                <td><button class="btn btn-sm btn-danger"> >>> </button>  </td>
+                            </form>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-6">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>MODEL NAME</th>
+                            <th>ENGINE</th>
+                            <th>PRICE</th>
+                            <th>DETAILS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="car: ${carsFighter}">
+                                <form action="/add-car" method="post">
+
+                                <input type="hidden" name="car_id" th:value="${car.id}">
+                                <input type="hidden" name="fighter_id" th:value="${fighter.id}">
+                                <td th:text="${car.id}"></td>
+                                <td th:text="${car.modelName}"></td>
+                                <td th:text="${car.engine}"></td>
+                                <td th:text="${car.price}"></td>
+                                <td> <button class="btn btn-sm btn-success"> <<< </button>  </td>
+                                </form>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
             <form action="/upd" method="post">
                 <input type="hidden" name="id" th:value="${fighter.id}">
                 <div class="row mt-2">
@@ -30,16 +92,16 @@
                         <label>CITY:</label>
                     </div>
                 </div>
-<!--                <div class="row mt-2">-->
-<!--                    <div class="col-12">-->
-<!--                        <select class="form-control" name="city.id">-->
-<!--                            <option th:each="city: ${cities}"-->
-<!--                                    th:text="${city.cityName}"-->
-<!--                                    th:selected="${fighter.city.id==city.id}"-->
-<!--                                    th:value="${city.id}"></option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="row mt-2">-->
+                <!--                    <div class="col-12">-->
+                <!--                        <select class="form-control" name="city.id">-->
+                <!--                            <option th:each="city: ${cities}"-->
+                <!--                                    th:text="${city.cityName}"-->
+                <!--                                    th:selected="${fighter.city.id==city.id}"-->
+                <!--                                    th:value="${city.id}"></option>-->
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                </div>-->
                 <div class="row mt-2">
                     <div class="col-12">
                         <label>AGE:</label>

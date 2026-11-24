@@ -38,6 +38,9 @@ public class Fighter {
 
     private static Integer idToBase = 5;
 
+    @ManyToMany
+    private List<Car> car;
+
     @Getter
     private static List<Fighter> fighters = new ArrayList<>();
 
