@@ -34,6 +34,14 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping(value = "/search")
+    public String getFighters(@RequestParam String word,
+                              Model model){
+        model.addAttribute("fighters", fighterRepository.findFightersByWord(word));
+
+        return "index";
+    }
+
     @GetMapping(value = "/details/{id}")
     public String getFighter(@PathVariable int id, Model model){
 
