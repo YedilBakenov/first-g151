@@ -1,12 +1,13 @@
 package com.main.first_project_g151.controller;
 
 
-import com.main.first_project_g151.db.DBConnector;
+import com.main.first_project_g151.cb.CriteriaImpl;
 import com.main.first_project_g151.model.Car;
 import com.main.first_project_g151.model.Fighter;
 import com.main.first_project_g151.repository.CarRepository;
 import com.main.first_project_g151.repository.FighterRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -28,9 +29,29 @@ public class HomeController {
 
     private final FighterRepository fighterRepository;
     private final CarRepository carRepository;
+    private final CriteriaImpl criteria;
     @GetMapping(value = "/") //http://localhost:8080/
     public String getHomePage(Model model){
         model.addAttribute("fighters", fighterRepository.findAll());
+        return "index";
+    }
+
+    @GetMapping(value = "/cb-name-age")
+    public String getResultByCriteria(Model model,
+                                      @RequestParam(required = false) String fullName,
+                                      @RequestParam(required = false) Integer age){
+
+        model.addAttribute("fighters", criteria.findFightersByFullNameAndAge(fullName, age));
+
+        return "index";
+    }
+
+    @GetMapping(value = "/cb-age")
+    public String getResultByCriteria(Model model,
+                                      @RequestParam(required = false) Integer age){
+
+        model.addAttribute("fighters", criteria.findFightersByAge(age));
+
         return "index";
     }
 
